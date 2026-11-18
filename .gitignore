@@ -8,8 +8,6 @@ __pycache__/
 .ruff_cache/
 
 # Données et modèles (versionnés par DVC, pas par Git)
-/data/raw/
-/data/processed/
 /models/*
 !/models/.gitkeep
 

@@ -10,13 +10,15 @@ classes:            # ordre = index YOLO (0..5), ne pas modifier après l'entra�
 
 data:
   taco_annotations_url: https://raw.githubusercontent.com/pedropro/TACO/master/data/annotations.json
+  image_url_field: flickr_640_url   # "flickr_url" = originaux (beaucoup plus lourds)
+  download_workers: 8
   raw_dir: data/raw/taco
   processed_dir: data/processed
   mapping_file: configs/taco_mapping.yaml
-  max_image_side: 1280      # redimensionnement des images brutes (TACO = photos jusqu'à 4000 px)
+  max_image_side: 1280      # plafond de redimensionnement si on utilise les originaux
   val_ratio: 0.15
   test_ratio: 0.10
-  min_box_size: 4           # en pixels, après redimensionnement
+  min_box_size: 4           # boîtes < 4 px (après redimensionnement) ignorées
 
 train:
   model: yolo26n.pt

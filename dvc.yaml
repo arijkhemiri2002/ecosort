@@ -1,0 +1,42 @@
+stages:
+  download:
+    cmd: python -m ecosort.data.download
+    deps:
+      - src/ecosort/data/download.py
+    params:
+      - data.taco_annotations_url
+      - data.image_url_field
+    outs:
+      - data/raw/taco:
+          persist: true          # ne pas effacer les images déjà téléchargées
+
+  prepare:
+    cmd: python -m ecosort.data.prepare
+    deps:
+      - src/ecosort/data/prepare.py
+      - configs/taco_mapping.yaml
+      - data/raw/taco
+    params:
+      - seed
+      - classes
+      - data.max_image_side
+      - data.val_ratio
+      - data.test_ratio
+      - data.min_box_size
+    outs:
+      - data/processed
+    metrics:
+      - reports/data_stats.json:
+          cache: false
+
+  validate_data:
+    cmd: python -m ecosort.data.validate
+    deps:
+      - src/ecosort/data/validate.py
+      - data/processed
+    outs:
+      - reports/data_samples:
+          cache: false
+    metrics:
+      - reports/data_validation.json:
+          cache: false

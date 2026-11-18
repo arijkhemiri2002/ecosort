@@ -1,0 +1,45 @@
+{
+  "images": {
+    "train": 1125,
+    "val": 225,
+    "test": 150
+  },
+  "background_images": {
+    "train": 1,
+    "val": 1,
+    "test": 0
+  },
+  "instances": {
+    "train": {
+      "plastic": 1659,
+      "paper": 331,
+      "glass": 144,
+      "metal": 392,
+      "cigarette": 344,
+      "other": 398
+    },
+    "val": {
+      "plastic": 324,
+      "paper": 82,
+      "glass": 64,
+      "metal": 80,
+      "cigarette": 87,
+      "other": 123
+    },
+    "test": {
+      "plastic": 239,
+      "paper": 42,
+      "glass": 37,
+      "metal": 70,
+      "cigarette": 83,
+      "other": 47
+    }
+  },
+  "missing_raw": 0,
+  "skipped": {
+    "aspect_mismatch": 0,
+    "corrupt": 0
+  },
+  "dropped_small_boxes": 238,
+  "mapping_warnings": 0
+}

@@ -1,0 +1,10 @@
+{
+  "ok": 1,
+  "n_errors": 0,
+  "train_images": 1125,
+  "train_labels": 1125,
+  "val_images": 225,
+  "val_labels": 225,
+  "test_images": 150,
+  "test_labels": 150
+}

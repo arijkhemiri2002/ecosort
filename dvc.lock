@@ -1,0 +1,82 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: python -m ecosort.data.download
+    deps:
+    - path: src/ecosort/data/download.py
+      hash: md5
+      md5: 85bd2878d8e5ae786dedac1990b25888
+      size: 4452
+    params:
+      params.yaml:
+        data.image_url_field: flickr_640_url
+        data.taco_annotations_url: 
+          https://raw.githubusercontent.com/pedropro/TACO/master/data/annotations.json
+    outs:
+    - path: data/raw/taco
+      hash: md5
+      md5: ebfbd187133721f14273938c3aadd0a0.dir
+      size: 2158086814
+      nfiles: 1502
+  prepare:
+    cmd: python -m ecosort.data.prepare
+    deps:
+    - path: configs/taco_mapping.yaml
+      hash: md5
+      md5: df5544e199341353909d5c22b3869132
+      size: 1673
+    - path: data/raw/taco
+      hash: md5
+      md5: ebfbd187133721f14273938c3aadd0a0.dir
+      size: 2158086814
+      nfiles: 1502
+    - path: src/ecosort/data/prepare.py
+      hash: md5
+      md5: 9fe59da06285084662ceda9d3c444db9
+      size: 8908
+    params:
+      params.yaml:
+        classes:
+        - plastic
+        - paper
+        - glass
+        - metal
+        - cigarette
+        - other
+        data.max_image_side: 1280
+        data.min_box_size: 4
+        data.test_ratio: 0.1
+        data.val_ratio: 0.15
+        seed: 42
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
+      size: 493907771
+      nfiles: 3001
+    - path: reports/data_stats.json
+      hash: md5
+      md5: 00720f256cd8ad2b03bb6efe6dd53fd1
+      size: 779
+  validate_data:
+    cmd: python -m ecosort.data.validate
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
+      size: 493907771
+      nfiles: 3001
+    - path: src/ecosort/data/validate.py
+      hash: md5
+      md5: 9f847bef81d841e225887d7e39165077
+      size: 4900
+    outs:
+    - path: reports/data_samples
+      hash: md5
+      md5: 843e250c5033ddb9c367eac6c07f56a3.dir
+      size: 1881355
+      nfiles: 8
+    - path: reports/data_validation.json
+      hash: md5
+      md5: 942ae5e432574428a0a457a7ad5efbd2
+      size: 173
