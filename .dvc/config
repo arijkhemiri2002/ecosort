@@ -1,4 +1,6 @@
 [core]
-    remote = localstore
+    remote = origin
 ['remote "localstore"']
     url = C:\Users\arijk\dvc-storage\ecosort
+['remote "origin"']
+    url = https://dagshub.com/arijkhemiri2002/ecosort.dvc
