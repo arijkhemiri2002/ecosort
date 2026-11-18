@@ -40,3 +40,20 @@ stages:
     metrics:
       - reports/data_validation.json:
           cache: false
+
+  train:
+    cmd: python -m ecosort.training.train
+    deps:
+      - src/ecosort/training/train.py
+      - src/ecosort/training/mlflow_utils.py
+      - data/processed
+    params:
+      - seed
+      - train
+    outs:
+      - models/best.pt
+      - models/run_info.json:
+          cache: false
+    metrics:
+      - reports/train_metrics.json:
+          cache: false        

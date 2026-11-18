@@ -1,0 +1,7 @@
+{
+  "run_id": "15744bc8e6134ddab0be184789a248e6",
+  "experiment_id": "1",
+  "run_name": "smoke-test-cpu",
+  "tracking_uri": "http://localhost:5000",
+  "smoke_test": true
+}

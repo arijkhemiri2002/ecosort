@@ -7,10 +7,6 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
-# Données et modèles (versionnés par DVC, pas par Git)
-/models/*
-!/models/.gitkeep
-
 # Ultralytics / MLflow
 runs/
 mlruns/
@@ -27,3 +23,6 @@ mlartifacts/
 .ipynb_checkpoints/
 Thumbs.db
 .DS_Store
+
+# Serveur MLflow local (base SQLite + artefacts)
+.mlflow/
