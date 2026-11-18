@@ -1,0 +1,12 @@
+-r base.txt
+# torch/torchvision installés séparément (index CUDA), voir README
+ultralytics>=8.4.190,<8.5
+dvc>=3.55,<4
+mlflow>=3.1,<4
+onnx>=1.17
+onnxslim>=0.1.40
+onnxruntime>=1.20
+pandas>=2.2
+matplotlib>=3.8
+requests>=2.32
+tqdm>=4.66

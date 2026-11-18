@@ -1,0 +1,54 @@
+seed: 42
+
+classes:            # ordre = index YOLO (0..5), ne pas modifier après l'entraînement
+  - plastic
+  - paper
+  - glass
+  - metal
+  - cigarette
+  - other
+
+data:
+  taco_annotations_url: https://raw.githubusercontent.com/pedropro/TACO/master/data/annotations.json
+  raw_dir: data/raw/taco
+  processed_dir: data/processed
+  mapping_file: configs/taco_mapping.yaml
+  max_image_side: 1280      # redimensionnement des images brutes (TACO = photos jusqu'à 4000 px)
+  val_ratio: 0.15
+  test_ratio: 0.10
+  min_box_size: 4           # en pixels, après redimensionnement
+
+train:
+  model: yolo26n.pt
+  epochs: 80
+  imgsz: 640
+  batch: 4               
+  patience: 20
+  device: "0"              
+  workers: 2              
+  optimizer: auto
+  lr0: 0.01
+  cos_lr: true
+  close_mosaic: 10
+  amp: true
+
+mlflow:
+  tracking_uri: http://localhost:5000
+  experiment_name: ecosort-yolo
+
+evaluate:
+  split: test
+  conf: 0.001               # conf basse pour calculer la mAP
+  iou: 0.6
+
+export:
+  imgsz: 640
+  opset: 17
+  simplify: true
+  dynamic: false
+  half: false
+
+inference:
+  conf_threshold: 0.30
+  iou_threshold: 0.45
+  max_detections: 100

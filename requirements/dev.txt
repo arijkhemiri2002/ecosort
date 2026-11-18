@@ -1,0 +1,12 @@
+# Environnement local complet (entraînement + API + UI + tests).
+# On n'inclut PAS api.txt : opencv-python-headless entrerait en conflit avec
+# opencv-python installé par ultralytics (deux paquets fournissent "cv2").
+-r train.txt
+-r app.txt
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+httpx>=0.27
+pytest>=8.2
+ruff>=0.6

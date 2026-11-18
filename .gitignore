@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.pytest_cache/
+.ruff_cache/
+
+# Données et modèles (versionnés par DVC, pas par Git)
+/data/raw/
+/data/processed/
+/models/*
+!/models/.gitkeep
+
+# Ultralytics / MLflow
+runs/
+mlruns/
+mlartifacts/
+/*.pt
+/*.onnx
+
+# DVC (local)
+/dvc-storage/
+
+# IDE / OS
+.vscode/
+.idea/
+.ipynb_checkpoints/
+Thumbs.db
+.DS_Store
