@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src/ecosort/data/download.py
       hash: md5
-      md5: 85bd2878d8e5ae786dedac1990b25888
-      size: 4452
+      md5: 94ac42c36a76adce2a01ac3444b02410
+      size: 4336
     params:
       params.yaml:
         data.image_url_field: flickr_640_url
@@ -23,8 +23,8 @@ stages:
     deps:
     - path: configs/taco_mapping.yaml
       hash: md5
-      md5: df5544e199341353909d5c22b3869132
-      size: 1673
+      md5: 85142534d506a8425da0a0a6e9cf9071
+      size: 1603
     - path: data/raw/taco
       hash: md5
       md5: ebfbd187133721f14273938c3aadd0a0.dir
@@ -32,8 +32,8 @@ stages:
       nfiles: 1502
     - path: src/ecosort/data/prepare.py
       hash: md5
-      md5: 9fe59da06285084662ceda9d3c444db9
-      size: 8908
+      md5: 0778447e2f65ff40e79988de03bdfed6
+      size: 8672
     params:
       params.yaml:
         classes:
@@ -51,25 +51,25 @@ stages:
     outs:
     - path: data/processed
       hash: md5
-      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
-      size: 493907771
-      nfiles: 3001
+      md5: bf1ebdb29725df1ebbd8c53a034f7bd2.dir
+      size: 493990155
+      nfiles: 3003
     - path: reports/data_stats.json
       hash: md5
-      md5: 00720f256cd8ad2b03bb6efe6dd53fd1
-      size: 779
+      md5: b53a87e8530c3fa6be56f8b1477957b2
+      size: 735
   validate_data:
     cmd: python -m ecosort.data.validate
     deps:
     - path: data/processed
       hash: md5
-      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
-      size: 493907771
-      nfiles: 3001
+      md5: bf1ebdb29725df1ebbd8c53a034f7bd2.dir
+      size: 493990155
+      nfiles: 3003
     - path: src/ecosort/data/validate.py
       hash: md5
-      md5: 9f847bef81d841e225887d7e39165077
-      size: 4900
+      md5: 1cd3730e51fe252c18b32bdf07536245
+      size: 4781
     outs:
     - path: reports/data_samples
       hash: md5
@@ -78,5 +78,5 @@ stages:
       nfiles: 8
     - path: reports/data_validation.json
       hash: md5
-      md5: 942ae5e432574428a0a457a7ad5efbd2
-      size: 173
+      md5: 4ca9d3466c6354f33662b9606a2f0a26
+      size: 164
