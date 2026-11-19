@@ -39,9 +39,12 @@ mlflow:
   experiment_name: ecosort-yolo
 
 evaluate:
-  split: test
-  conf: 0.001               # conf basse pour calculer la mAP
+  split: test               # split de mesure finale
+  threshold_split: val      # split pour choisir le seuil de confiance
+  conf: 0.001               # seuil bas : courbe PR complète pour la mAP
   iou: 0.6
+  batch: 8
+  device: cpu               # inférence seule : le CPU suffit
 
 export:
   imgsz: 640

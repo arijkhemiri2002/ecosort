@@ -8,7 +8,7 @@ stages:
       - data.image_url_field
     outs:
       - data/raw/taco:
-          persist: true          # ne pas effacer les images déjà téléchargées
+          persist: true
 
   prepare:
     cmd: python -m ecosort.data.prepare
@@ -56,4 +56,21 @@ stages:
           cache: false
     metrics:
       - reports/train_metrics.json:
-          cache: false        
+          cache: false
+
+  evaluate:
+    cmd: python -m ecosort.training.evaluate
+    deps:
+      - src/ecosort/training/evaluate.py
+      - models/best.pt
+      - models/run_info.json
+      - data/processed
+    params:
+      - evaluate
+      - train.imgsz
+    outs:
+      - reports/eval:
+          cache: false
+    metrics:
+      - reports/eval_metrics.json:
+          cache: false

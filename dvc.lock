@@ -51,9 +51,9 @@ stages:
     outs:
     - path: data/processed
       hash: md5
-      md5: bf1ebdb29725df1ebbd8c53a034f7bd2.dir
-      size: 493990155
-      nfiles: 3003
+      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
+      size: 493907771
+      nfiles: 3001
     - path: reports/data_stats.json
       hash: md5
       md5: b53a87e8530c3fa6be56f8b1477957b2
@@ -63,9 +63,9 @@ stages:
     deps:
     - path: data/processed
       hash: md5
-      md5: bf1ebdb29725df1ebbd8c53a034f7bd2.dir
-      size: 493990155
-      nfiles: 3003
+      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
+      size: 493907771
+      nfiles: 3001
     - path: src/ecosort/data/validate.py
       hash: md5
       md5: 1cd3730e51fe252c18b32bdf07536245
@@ -85,9 +85,9 @@ stages:
     deps:
     - path: data/processed
       hash: md5
-      md5: d24b57585d9e770e3ec46a91adb3afe0.dir
-      size: 494205730
-      nfiles: 3003
+      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
+      size: 493907771
+      nfiles: 3001
     - path: src/ecosort/training/mlflow_utils.py
       hash: md5
       md5: 2f714f7ab486126e302818909b552b9b
@@ -125,3 +125,43 @@ stages:
       hash: md5
       md5: 52472e4d107e8b2efe132b06c1d81fb5
       size: 113
+  evaluate:
+    cmd: python -m ecosort.training.evaluate
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 1b4edbd8cfad73f13e484082b11743a5.dir
+      size: 493907771
+      nfiles: 3001
+    - path: models/best.pt
+      hash: md5
+      md5: a3135dc875d07fafc9c45b8a759018bc
+      size: 5429253
+    - path: models/run_info.json
+      hash: md5
+      md5: b59d3bc71b86d3aa7f958e7e2727adea
+      size: 212
+    - path: src/ecosort/training/evaluate.py
+      hash: md5
+      md5: 371662fd35a5f45a776020992e323359
+      size: 7104
+    params:
+      params.yaml:
+        evaluate:
+          split: test
+          threshold_split: val
+          conf: 0.001
+          iou: 0.6
+          batch: 8
+          device: cpu
+        train.imgsz: 640
+    outs:
+    - path: reports/eval
+      hash: md5
+      md5: 673232ba968f7fc16e735a571c112b5c.dir
+      size: 1373254
+      nfiles: 7
+    - path: reports/eval_metrics.json
+      hash: md5
+      md5: 71d4aa9ec7275502a9ba693c8865fd3b
+      size: 1051

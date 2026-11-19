@@ -1,0 +1,52 @@
+{
+  "split": "test",
+  "precision": 0.3777,
+  "recall": 0.2722,
+  "mAP50": 0.2447,
+  "mAP50_95": 0.1765,
+  "best_conf": 0.108,
+  "best_conf_val_f1": 0.2311,
+  "operating_point": {
+    "precision": 0.2882,
+    "recall": 0.3058,
+    "f1": 0.2547
+  },
+  "per_class": {
+    "plastic": {
+      "precision": 0.5309,
+      "recall": 0.4546,
+      "mAP50": 0.4375,
+      "mAP50_95": 0.3026
+    },
+    "paper": {
+      "precision": 0.2442,
+      "recall": 0.3571,
+      "mAP50": 0.2396,
+      "mAP50_95": 0.1982
+    },
+    "glass": {
+      "precision": 0.1689,
+      "recall": 0.027,
+      "mAP50": 0.0401,
+      "mAP50_95": 0.0236
+    },
+    "metal": {
+      "precision": 0.5192,
+      "recall": 0.6286,
+      "mAP50": 0.5423,
+      "mAP50_95": 0.4255
+    },
+    "cigarette": {
+      "precision": 0.6222,
+      "recall": 0.0596,
+      "mAP50": 0.133,
+      "mAP50_95": 0.0631
+    },
+    "other": {
+      "precision": 0.1806,
+      "recall": 0.1064,
+      "mAP50": 0.0757,
+      "mAP50_95": 0.0458
+    }
+  }
+}
