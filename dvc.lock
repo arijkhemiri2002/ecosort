@@ -80,3 +80,48 @@ stages:
       hash: md5
       md5: 4ca9d3466c6354f33662b9606a2f0a26
       size: 164
+  train:
+    cmd: python -m ecosort.training.train
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: d24b57585d9e770e3ec46a91adb3afe0.dir
+      size: 494205730
+      nfiles: 3003
+    - path: src/ecosort/training/mlflow_utils.py
+      hash: md5
+      md5: 2f714f7ab486126e302818909b552b9b
+      size: 3400
+    - path: src/ecosort/training/train.py
+      hash: md5
+      md5: 502af7557d45c5d884cbc0832e06cce8
+      size: 5413
+    params:
+      params.yaml:
+        seed: 42
+        train:
+          model: yolo26n.pt
+          epochs: 80
+          imgsz: 640
+          batch: 16
+          patience: 20
+          device: '0'
+          workers: 4
+          optimizer: AdamW
+          lr0: 0.001
+          cos_lr: true
+          close_mosaic: 10
+          amp: true
+    outs:
+    - path: models/best.pt
+      hash: md5
+      md5: a3135dc875d07fafc9c45b8a759018bc
+      size: 5429253
+    - path: models/run_info.json
+      hash: md5
+      md5: b59d3bc71b86d3aa7f958e7e2727adea
+      size: 212
+    - path: reports/train_metrics.json
+      hash: md5
+      md5: 52472e4d107e8b2efe132b06c1d81fb5
+      size: 113
